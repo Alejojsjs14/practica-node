@@ -1,0 +1,26 @@
+### recuperar todas las peliculas
+GET http://localhost:1234/movies
+
+### Recuperar pelicula por id
+GET http://localhost:1234/movies/2
+
+### recuperar todas las peliculas por género
+GET http://localhost:1234/movies?genre=COMEDY
+
+###Crear una pelicula con POST
+POST http://localhost:1234/movies
+Content-Type: application/json
+
+{
+    "id": "6",
+    "title": "Anabelle",
+    "year": 2022,
+    "director": "Martha Tenerife",
+    "duration": 168,
+    "poster": "https://i.ebayimg.com/images/g/4goAAOSwMyBe7hnQ/s-l1200.webp",
+    "genre": ["Accion", "Terror"],
+    "rate": 6.9
+}
+
+###productos de lo otro
+GET https://localhost:1234/products
