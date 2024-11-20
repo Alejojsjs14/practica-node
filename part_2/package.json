@@ -1,0 +1,14 @@
+{
+  "name": "part_2",
+  "version": "1.0.0",
+  "main": "1.https.js",
+  "scripts": {
+    "dev" : "node --watch 1.https.js",
+    "dev2" : "node --watch 2.rounting.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
