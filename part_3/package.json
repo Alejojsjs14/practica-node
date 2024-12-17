@@ -4,16 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:1": "nodemon ./part_2/2.rounting.js",
-    "dev:2": "nodemon ./part_2/1.https.js",
-    "dev:3": "node --watch app.js",
+    "start": "node --watch app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^3.1.7",
+    "http-status": "2.0.0",
     "standard": "^17.1.2"
   },
   "eslintConfig": {

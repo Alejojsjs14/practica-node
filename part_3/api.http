@@ -5,7 +5,7 @@ GET http://localhost:1234/movies
 GET http://localhost:1234/movies/2
 
 ### recuperar todas las peliculas por género
-GET http://localhost:1234/movies?genre=COMEDY
+GET http://localhost:1234/movies?genre=Terror
 
 ###Crear una pelicula con POST
 POST http://localhost:1234/movies
