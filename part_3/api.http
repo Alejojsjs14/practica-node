@@ -5,21 +5,43 @@ GET http://localhost:1234/movies
 GET http://localhost:1234/movies/2
 
 ### recuperar todas las peliculas por género
-GET http://localhost:1234/movies?genre=Terror
+GET http://localhost:1234/movies?genre=ACCION
 
 ###Crear una pelicula con POST
 POST http://localhost:1234/movies
 Content-Type: application/json
 
 {
-    "id": "6",
     "title": "Anabelle",
     "year": 2022,
     "director": "Martha Tenerife",
     "duration": 168,
     "poster": "https://i.ebayimg.com/images/g/4goAAOSwMyBe7hnQ/s-l1200.webp",
-    "genre": ["Accion", "Terror"],
-    "rate": 6.9
+    "genre": ["Action", "Horror"],
+    "rate": 7.9
+}
+
+###Crear una pelicula con POST que de error
+POST http://localhost:1234/movies
+Content-Type: application/json
+
+{
+    "title": 2,
+    "year": "hola",
+    "director": "Martha Tenerife",
+    "duration": 168,
+    "poster": "https://i.ebayimg.com/images/g/4goAAOSwMyBe7hnQ/s-l1200.webp",
+    "genre": ["Accion", "Terror", "Ni idea"],
+    "rate": 60.9
+}
+
+### Actualizar una pelicula 
+
+PATCH http://localhost:1234/movies/bf47ec73-64d5-47a2-86b0-44b9f99e893b
+Content-Type: application/json
+
+{
+    "year": 1993
 }
 
 ###productos de lo otro
