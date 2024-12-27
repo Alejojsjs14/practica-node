@@ -37,11 +37,13 @@ Content-Type: application/json
 
 ### Actualizar una pelicula 
 
-PATCH http://localhost:1234/movies/bf47ec73-64d5-47a2-86b0-44b9f99e893b
+PATCH http://localhost:1234/movies/d431e8f8-4d35-4893-a616-db88c49e6a48
 Content-Type: application/json
 
 {
-    "year": 1993
+    "id": 123,
+    "title": "hola",
+    "year": 1903
 }
 
 ###productos de lo otro

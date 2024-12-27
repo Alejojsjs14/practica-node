@@ -28,5 +28,6 @@ function validatePartialMovie (object) {
 }
 
 module.exports = {
-  validateMovie
+  validateMovie,
+  validatePartialMovie
 }
