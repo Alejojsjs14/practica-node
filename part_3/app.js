@@ -9,6 +9,8 @@ app.disable('x-powered-by')
 
 // Todo lo que sea movies se indetifica con /movies
 app.get('/movies', (req, res) => {
+  // El header de origin no se envia cuando la peticion se hace al mismo origen
+  res.header('Access-Control-Allow-Origin', 'http://localhost:8080')
   const { genre } = req.query
   if (genre) {
     const filteredMovies = movies.filter((movie) =>

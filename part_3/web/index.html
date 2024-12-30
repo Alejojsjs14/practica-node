@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Probar api rest</title>
+    <style>
+        article {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        img {
+            height: auto;
+            width: 320px;
+            max-width: 100%;
+        }
+    </style>
     <script type="module">
         fetch('http://localhost:1234/movies')
         .then(res => res.json())
@@ -12,13 +24,28 @@
                 return `
                     <article data-id="${movie.id}">
                         <h2>${movie.title}</h2>
-                        <img serc="${movie.poster}" alt="${movie.title}">
-                        <p>${movie.description}</p>
+                        <img src="${movie.poster}" alt="${movie.title}">
+                        <p>${movie.rate}</p>
+
+                        <button>Eliminar</button>
                     </article>
                 `
             }).join('')
 
             document.querySelector('main').innerHTML = html
+            document.addEventListener('click', e => {
+                if (e.target.matches()) {
+                    const article = e.target.closest('article')
+                    const id = article.dataset.id
+                    fetch(`http://localhost:1234/movies/${id}`, {
+                        method: 'DELETE'
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        article.remove()
+                    })
+                }
+            })
         })
     </script>
 </head>
