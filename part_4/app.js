@@ -1,27 +1,10 @@
 import express, { json } from 'express'
-import cors from 'cors'
 import { moviesRouter } from './routes/movies.routes.js'
+import { corsMiddleware } from './middlewares/cors.js'
 
 const app = express()
 app.use(json())
-app.use(cors({
-  origin: (origin, callback) => {
-    const ACEPTED_ORIGINS = [
-      'http://localhost:8080',
-      'http://localhost:8081'
-    ]
-
-    if (ACEPTED_ORIGINS.includes(origin)) {
-      callback(null, true)
-    }
-
-    if (!origin) {
-      return callback(null, true)
-    }
-
-    return callback(new Error('Not allowed by CORS'))
-  }
-}))
+app.use(corsMiddleware())
 app.disable('x-powered-by')
 
 // Todo lo que sea movies se indetifica con /movies

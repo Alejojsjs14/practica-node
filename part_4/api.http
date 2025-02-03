@@ -36,8 +36,7 @@ Content-Type: application/json
 }
 
 ### Actualizar una pelicula 
-
-PATCH http://localhost:1234/movies/d431e8f8-4d35-4893-a616-db88c49e6a48
+PATCH http://localhost:1234/movies/484b7a2c-a923-47fc-90cb-7461322f5fe0
 Content-Type: application/json
 
 {
@@ -46,5 +45,5 @@ Content-Type: application/json
     "year": 1903
 }
 
-###productos de lo otro
-GET https://localhost:1234/products
+### Eliminar una pelicula
+DELETE http://localhost:1234/movies/9c646591-ad0b-40b6-9685-b25734aeb7c2
