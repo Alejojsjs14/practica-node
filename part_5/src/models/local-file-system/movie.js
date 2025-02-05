@@ -1,6 +1,9 @@
 import { randomUUID } from 'node:crypto'
-import { readJSON } from '../../utils/createRequire.js'
-const movies = readJSON('./src/movies.json')
+import fs from 'fs/promises'
+import path from 'node:path'
+// import { readJSON } from '../../utils/createRequire.js'
+const movies = await fs.readFile(path.resolve('src/models/local-file-system/movies.json'), 'utf-8').then(JSON.parse)
+// const movies = readJSON('./movies.json')
 
 export class MovieModel {
   static getAll = async ({ genre }) => {
