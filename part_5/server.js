@@ -6,7 +6,7 @@ import { PORT } from './src/utils/env.config.js';
 (async () => {
   try {
     // Sincroniza el modelo con la base de datos (valida que la base de datos si este corriendo)
-    await sequelize.sync()
+    await sequelize.authenticate()
     console.log(
       'Connection to the database has been established successfully.'
     )

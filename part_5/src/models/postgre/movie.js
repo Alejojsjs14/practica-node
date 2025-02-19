@@ -28,10 +28,12 @@ export const movie = sequelize.define(
       allowNull: false
     },
     poster: {
-      type: DataTypes.TEXT
+      type: DataTypes.STRING,
+      allowNull: false
     },
     genre: {
       type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: false,
       unique: true
     },
     rate: {
@@ -45,3 +47,4 @@ export const movie = sequelize.define(
     timestamps: true
   }
 )
+console.log(movie === sequelize.models.movie)

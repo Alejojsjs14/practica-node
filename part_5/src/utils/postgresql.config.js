@@ -23,3 +23,7 @@ export const sequelize = new Sequelize(POSTGRES_URL, {
   },
   logging: false // Desactiva el logging de las consultas SQL en la consola
 })
+
+sequelize.authenticate()
+  .then(() => console.log('Conectado a PostgreSQL'))
+  .catch(err => console.error('Error al conectar con PostgreSQL:', err))

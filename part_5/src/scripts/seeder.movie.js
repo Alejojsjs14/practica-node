@@ -39,8 +39,9 @@ import { movie } from '../models/postgre/movie.js';
       }
     ]
 
+    console.log('Insertando datos de ejemplo...')
     // Inserta los datos de ejemplo en la tabla
-    await movie.bulkCreate(seedData)
+    await movie.bulkCreate(seedData, { validate: true })
 
     console.log('Datos de ejemplo insertados correctamente')
   } catch (error) {
