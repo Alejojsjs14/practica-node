@@ -1,16 +1,34 @@
 const express = require('express')
 const crypto = require('node:crypto')
 const movies = require('./movies.json')
+const cors = require('cors')
 const { validateMovie, validatePartialMovie } = require('./schemas/movies')
 
 const app = express()
 app.use(express.json())
+app.use(cors({
+  origin: (origin, callback) => {
+    const ACEPTED_ORIGINS = [
+      'http://localhost:8080',
+      'http://localhost:8081'
+    ]
+
+    if (!origin || ACEPTED_ORIGINS.includes(origin)) {
+      callback(null, true)
+    }
+
+    if (!origin) {
+      return callback(null, true)
+    }
+
+    return callback(new Error('Not allowed by CORS'))
+  }
+}))
 app.disable('x-powered-by')
 
 // Todo lo que sea movies se indetifica con /movies
 app.get('/movies', (req, res) => {
   // El header de origin no se envia cuando la peticion se hace al mismo origen
-  res.header('Access-Control-Allow-Origin', 'http://localhost:8080')
   const { genre } = req.query
   if (genre) {
     const filteredMovies = movies.filter((movie) =>
@@ -50,6 +68,19 @@ app.post('/movies', (req, res) => {
   movies.push(newMovie)// agrega la nueva pelicula al array de peliculas
 
   res.status(201).json(newMovie)
+})
+
+app.delete('/movies/:id', (req, res) => {
+  const { id } = req.params
+  const movieIndex = movies.findIndex(movie => movie.id === id)
+
+  if (movieIndex === -1) {
+    return res.status(404).json({ message: 'Movie not found' })
+  }
+
+  movies.splice(movieIndex, 1)
+
+  return res.json({ message: 'Movie deleted' })
 })
 
 app.patch('/movies/:id', (req, res) => {
